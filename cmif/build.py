@@ -148,7 +148,7 @@ def tei_license(elem_text="", attrib_target=""):
 
 def tei_source_desc(children=None):
     """
-    create TEI element <sourceDesc>
+    create TEI element <sourceDesc> with (optional) children
     """
     source_desc = etree.Element("sourceDesc")
     add_children(source_desc, children)
