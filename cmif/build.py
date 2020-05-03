@@ -16,7 +16,7 @@ PI_TEXT = "href=\""+RNG_SCHEMA+"\" type=\"application/xml\" schematypens" + \
 
 def pi_rng():
     """
-    create xml model processing instruction
+    create processing instruction <?xml-model?>
     """
     return etree.ProcessingInstruction("xml-model", PI_TEXT)
 
@@ -262,14 +262,14 @@ def tei_p():
 
 def add_pi(tree):
     """
-    add xml-model processing instruction to given element tree
+    add processing instruction <?xml-model?> to given element tree
     """
     tree.getroot().addprevious(pi_rng())
 
 
 def add_child(parent, element):
     """
-    add element to parent if element is not None
+    add element to parent if not None
     """
     if element is not None:
         parent.append(element)
@@ -277,7 +277,7 @@ def add_child(parent, element):
 
 def add_children(parent, elements):
     """
-    add elements to parent if elements is not None
+    add elements to parent if not None
     """
     if elements is not None:
         for child in elements:
