@@ -11,7 +11,7 @@ from lxml import etree
 
 def remote_file(url):
     """
-    send http get request to given url with (optional) headers
+    send http get request to given url
     """
     try:
         response = requests.get(url)
