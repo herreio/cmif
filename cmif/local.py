@@ -6,13 +6,14 @@ read and write local XML data in CMI format
 
 import os
 
-from .schema import etree, parser
+from lxml import etree
 
 
 def writer(tree, file="cmif.xml", path="."):
     """
     write given element tree to file at path
     """
+    parser = etree.XMLParser(remove_blank_text=True)
     xml = etree.ElementTree(tree, parser=parser)
     if path and not os.path.exists(path):
         os.makedirs(path)
@@ -24,4 +25,5 @@ def reader(filepath):
     """
     read xml data from given file path
     """
+    parser = etree.XMLParser(remove_blank_text=True)
     return etree.parse(filepath, parser=parser)

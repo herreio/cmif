@@ -6,7 +6,7 @@ retrieve remote XML data in CMI format
 
 import requests
 
-from .schema import etree, parser
+from lxml import etree
 
 
 def remote_file(url):
@@ -16,6 +16,7 @@ def remote_file(url):
     try:
         response = requests.get(url)
         if response.status_code == 200:
+            parser = etree.XMLParser(remove_blank_text=True)
             return etree.fromstring(response.content, parser=parser)
         print("requesting remote file failed!")
         print("url of request:")
