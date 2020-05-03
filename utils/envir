@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# rm -rf env/
-virtualenv -p python3 --no-site-packages env
-source env/bin/activate
