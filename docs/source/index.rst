@@ -1,6 +1,6 @@
 .. Python Package documentation master file
 
-Welcome to Python Package's documentation!
+Welcome to cmif's documentation!
 ==========================================
 
 .. toctree::
