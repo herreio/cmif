@@ -22,7 +22,7 @@ You can install this package via `PyPI <https://pypi.org/project/cmif/>`_:
 
 .. code-block:: shell
 
-    git clone https://github.com/herreio/cmif.git
+    git clone https://github.com/herreio/cmif.git --recurse-submodules
     cd cmif
     utils/setup
     source env/bin/activate
