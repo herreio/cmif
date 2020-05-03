@@ -5,6 +5,7 @@ dev/
 dev.*
 *-dev.*
 *_dev.*
+.profile
 
 # editor temp files
 *.swp
