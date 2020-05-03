@@ -125,7 +125,7 @@ def tei_idno(elem_text, attrib_type="url"):
 
 def tei_availability(child_license=None):
     """
-    create TEI element <availability> with (optional) child element <license>
+    create TEI element <availability> with (optional) child element <licence>
     """
     availability = etree.Element("availability")
     add_child(availability, child_license)
@@ -134,13 +134,13 @@ def tei_availability(child_license=None):
 
 def tei_license(elem_text="", attrib_target=""):
     """
-    create TEI element <license> with (optional) text and @target
+    create TEI element <licence> with (optional) text and @target
     """
     if elem_text == "" and attrib_target == "":
         elem_text = "This file is licensed under the terms" \
                         + " of the Creative-Commons-License CC-BY 4.0"
         attrib_target = "https://creativecommons.org/licenses/by/4.0/"
-    license = etree.Element("license")
+    license = etree.Element("licence")
     license.set("target", attrib_target)
     license.text = elem_text
     return license
