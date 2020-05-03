@@ -7,7 +7,7 @@ cmif
 Synopsis
 --------
 
-This is a simple python package (under development) to handle data in `CMI-format <https://github.com/TEI-Correspondence-SIG/CMIF>`_.
+This is a simple Python package (under development) to handle data in `CMI format <https://github.com/TEI-Correspondence-SIG/CMIF>`_.
 
 Installation
 ------------
@@ -51,4 +51,4 @@ Launch the Python interpreter and start by importing the necessary modules:
 See Also
 --------
 
-The python cli `csv2cmi <https://github.com/saw-leipzig/csv2cmi>`_, written by `K. Rettinghaus <https://github.com/rettinghaus>`_, allows to create cmi files from csv input.
+The Python command line interface `csv2cmi <https://github.com/saw-leipzig/csv2cmi>`_, written by `K. Rettinghaus <https://github.com/rettinghaus>`_, allows to create files in CMI format from CSV input.
