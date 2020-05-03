@@ -48,6 +48,16 @@ Launch the Python interpreter and start by importing the necessary modules:
     from cmif import *
 
 
+Test
+----
+
+In case you cloned the repository, you can run a unittest:
+
+.. code-block:: shell
+
+    python -m unittest test.creation
+
+
 See Also
 --------
 
