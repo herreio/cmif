@@ -1,8 +1,8 @@
 Reference
 =========
 
-cmif.demo module
------------------------------
+demo module
+-----------
 
 .. automodule:: cmif.demo
     :members:
@@ -10,8 +10,8 @@ cmif.demo module
     :show-inheritance:
 
 
-cmif.local module
------------------------------
+local module
+------------
 
 .. automodule:: cmif.local
     :members:
@@ -19,8 +19,17 @@ cmif.local module
     :show-inheritance:
 
 
-cmif.retrieve module
------------------------------
+geocode module
+--------------
+
+.. automodule:: cmif.geocode
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+retrieve module
+---------------
 
 .. automodule:: cmif.retrieve
     :members:
@@ -28,8 +37,8 @@ cmif.retrieve module
     :show-inheritance:
 
 
-cmif.schema module
------------------------------
+schema module
+-------------
 
 .. automodule:: cmif.schema
     :members:
