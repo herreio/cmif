@@ -33,8 +33,8 @@ title_stmt = build.tei_title_stmt([title, editor])
 
 # create <publicationStmt>
 publisher = build.tei_publisher(
-    build.tei_ref("cmif. Version latest",
-                  "https://pypi.org/project/cmif/"))
+    build.tei_ref("herreio",
+                  "https://github.com/herreio"))
 url = "https://raw.githubusercontent.com/herreio/cmif/master/" + \
     "test/output/cmif.xml"
 idno = build.tei_idno(url)
@@ -44,8 +44,8 @@ pub_stmt = build.tei_publication_stmt([publisher, idno,
                                        pub_date, availability])
 
 # create <sourceDesc>
-ref_url = "https://example.com/collected-imaginary-correspondences"
-bibl = build.tei_bibl("Collected Imaginary Correspondences. URL: ",
+ref_url = "https://github.com/herreio/benann/tree/master/data/de_lttr"
+bibl = build.tei_bibl("Briefe von Walter Benjamin aus dem Exil. URL: ",
                       "online")
 ref = build.tei_ref(ref_url, ref_url)
 bibl.append(ref)
@@ -63,27 +63,22 @@ header.append(file_desc)
 profile_desc = build.tei_profile_desc()
 
 # create <correspAction> with @type="sent"
-author = build.tei_pers_name("Anselm Schenkluhn",
-                             "http://d-nb.info/gnd/1122220138")
-sent_date = build.tei_date(attrib_when="2020-12-27")
+author = build.tei_pers_name("Walter Benjamin",
+                             "http://d-nb.info/gnd/118509039")
+sent_date = build.tei_date(attrib_when="1933-01-15")
 senders_place = build.tei_place_name("Berlin",
                                      "https://www.geonames.org/2950159")
 sent = build.tei_corresp_action("sent",
                                 children=[author, sent_date, senders_place])
 
 # create <correspAction> with @type="recieved"
-addressee = build.tei_pers_name("Kolja Linowitzki",
-                                "http://d-nb.info/gnd/1096364328")
-received_date = build.tei_date(attrib_when="2021-01-02")
-reciever_place = build.tei_place_name("Dresden",
-                                      "https://www.geonames.org/2935022")
-recieved = build.tei_corresp_action("recieved",
-                                    children=[addressee, received_date,
-                                              reciever_place])
-letter_ref = "https://example.com/collected-imaginary-correspondences/" + \
-    "happy-next-bday/"
+addressee = build.tei_pers_name("Gershom Scholem",
+                                "http://d-nb.info/gnd/118610295")
+recieved = build.tei_corresp_action("recieved", children=[addressee])
 
 # create <correspDesc> with @ref and child nodes
+letter_ref = "https://raw.githubusercontent.com/herreio/benann/master/data/" \
+    "de_lttr/Benjamin_Briefe_330115_Scholem.txt"
 corresp_desc = build.tei_corresp_desc(attrib_ref=letter_ref,
                                       children=[sent, recieved])
 

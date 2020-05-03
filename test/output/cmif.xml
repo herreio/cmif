@@ -9,7 +9,7 @@
       </titleStmt>
       <publicationStmt>
         <publisher>
-          <ref target="https://pypi.org/project/cmif/">cmif. Version latest</ref>
+          <ref target="https://github.com/herreio">herreio</ref>
         </publisher>
         <idno type="url">https://raw.githubusercontent.com/herreio/cmif/master/test/output/cmif.xml</idno>
         <date when="2020-05-03"/>
@@ -18,20 +18,18 @@
         </availability>
       </publicationStmt>
       <sourceDesc>
-        <bibl type="online">Collected Imaginary Correspondences. URL: <ref target="https://example.com/collected-imaginary-correspondences">https://example.com/collected-imaginary-correspondences</ref></bibl>
+        <bibl type="online">Briefe von Walter Benjamin aus dem Exil. URL: <ref target="https://github.com/herreio/benann/tree/master/data/de_lttr">https://github.com/herreio/benann/tree/master/data/de_lttr</ref></bibl>
       </sourceDesc>
     </fileDesc>
     <profileDesc>
-      <correspDesc ref="https://example.com/collected-imaginary-correspondences/happy-next-bday/">
+      <correspDesc ref="https://raw.githubusercontent.com/herreio/benann/master/data/de_lttr/Benjamin_Briefe_330115_Scholem.txt">
         <correspAction type="sent">
-          <persName ref="http://d-nb.info/gnd/1122220138">Anselm Schenkluhn</persName>
-          <date when="2020-12-27"/>
+          <persName ref="http://d-nb.info/gnd/118509039">Walter Benjamin</persName>
+          <date when="1933-01-15"/>
           <placeName ref="https://www.geonames.org/2950159">Berlin</placeName>
         </correspAction>
         <correspAction type="recieved">
-          <persName ref="http://d-nb.info/gnd/1096364328">Kolja Linowitzki</persName>
-          <date when="2021-01-02"/>
-          <placeName ref="https://www.geonames.org/2935022">Dresden</placeName>
+          <persName ref="http://d-nb.info/gnd/118610295">Gershom Scholem</persName>
         </correspAction>
       </correspDesc>
     </profileDesc>
