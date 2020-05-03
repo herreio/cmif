@@ -3,6 +3,6 @@
 
 from . import demo
 from . import local
-from . import schema
+from . import build
 from . import retrieve
 from . import authority
