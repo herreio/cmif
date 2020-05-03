@@ -4,8 +4,8 @@
 cmif
 ====
 
-Introduction
-------------
+Synopsis
+--------
 
 This is a simple python package (under development) to handle data in `CMI-format <https://github.com/TEI-Correspondence-SIG/CMIF>`_.
 
