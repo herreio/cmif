@@ -1,32 +1,37 @@
 Reference
 =========
 
+build module
+-------------
+
+.. automodule:: cmif.build
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 demo module
------------
+------------
 
 .. automodule:: cmif.demo
     :members:
     :undoc-members:
     :show-inheritance:
 
-
 local module
-------------
+-------------
 
 .. automodule:: cmif.local
     :members:
     :undoc-members:
     :show-inheritance:
 
+model module
+-------------
 
-geocode module
---------------
-
-.. automodule:: cmif.geocode
+.. automodule:: cmif.model
     :members:
     :undoc-members:
     :show-inheritance:
-
 
 retrieve module
 ---------------
@@ -36,11 +41,10 @@ retrieve module
     :undoc-members:
     :show-inheritance:
 
+authority module
+-----------------
 
-schema module
--------------
-
-.. automodule:: cmif.schema
+.. automodule:: cmif.authority.geonames
     :members:
     :undoc-members:
     :show-inheritance:
