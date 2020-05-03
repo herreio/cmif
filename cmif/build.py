@@ -176,7 +176,7 @@ def tei_profile_desc(children=None):
 
 def tei_corresp_desc(attrib_ref="", children=None):
     """
-    create TEI <correspDesc> element with @ref
+    create TEI element <correspDesc> with @ref
     """
     corresp_desc = etree.Element("correspDesc")
     if attrib_ref != "":
@@ -187,7 +187,7 @@ def tei_corresp_desc(attrib_ref="", children=None):
 
 def tei_corresp_action(attrib_type, children=None):
     """
-    create TEI <correspAction> element with @type
+    create TEI element <correspAction> with @type
     """
     corresp_action = etree.Element("correspAction")
     corresp_action.set("type", attrib_type)
@@ -197,7 +197,7 @@ def tei_corresp_action(attrib_type, children=None):
 
 def tei_date(attrib_when="", attrib_from="", attrib_to=""):
     """
-    create TEI <date> element with @when or @from and @to
+    create TEI element <date> with @when or @from and @to
     """
     date = etree.Element("date")
     if attrib_when != "":
@@ -210,7 +210,7 @@ def tei_date(attrib_when="", attrib_from="", attrib_to=""):
 
 def tei_place_name(elem_text, attrib_ref=""):
     """
-    create TEI <placeName> element with given element text and @ref
+    create TEI element <placeName> with given element text and @ref
     """
     place_name = etree.Element("placeName")
     place_name.text = elem_text
@@ -220,7 +220,7 @@ def tei_place_name(elem_text, attrib_ref=""):
 
 def tei_pers_name(elem_text, attrib_ref=""):
     """
-    create TEI <persName> element with given element text and @ref
+    create TEI element <persName> with given element text and @ref
     """
     pers_name = etree.Element("persName")
     pers_name.text = elem_text
@@ -241,7 +241,7 @@ def tei_text_empty():
 
 def tei_text():
     """
-    create TEI element <text> with child elements <body> and <p> (empty)
+    create TEI element <text>
     """
     return etree.Element("text")
 
