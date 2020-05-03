@@ -14,7 +14,7 @@
         <idno type="url">https://raw.githubusercontent.com/herreio/cmif/master/test/output/cmif.xml</idno>
         <date when="2020-05-03"/>
         <availability>
-          <license target="https://creativecommons.org/licenses/by/4.0/">This file is licensed under the terms of the Creative-Commons-License CC-BY 4.0</license>
+          <licence target="https://creativecommons.org/licenses/by/4.0/">This file is licensed under the terms of the Creative-Commons-License CC-BY 4.0</licence>
         </availability>
       </publicationStmt>
       <sourceDesc>
