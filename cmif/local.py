@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-read and write local XML data in CMI-format
+read and write local XML data in CMI format
 """
 
 import os

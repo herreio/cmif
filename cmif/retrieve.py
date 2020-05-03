@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-retrieve remote XML data in CMI-format
+retrieve remote XML data in CMI format
 """
 
 import requests

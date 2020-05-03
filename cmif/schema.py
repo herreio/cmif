@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-handle XML data in CMI-format
+handle XML data in CMI format
 """
 
 from lxml import etree

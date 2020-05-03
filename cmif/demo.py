@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-URLs of example XML data demoing CMI-format
+demo XML data in CMI format
 """
 
 from .retrieve import remote_file
