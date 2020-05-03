@@ -24,6 +24,7 @@ You can install this package via `PyPI <https://pypi.org/project/cmif/>`_:
 
     git clone https://github.com/herreio/cmif.git --recurse-submodules
     cd cmif
+    # create and activate virutalenv
     utils/setup
     source env/bin/activate
 
