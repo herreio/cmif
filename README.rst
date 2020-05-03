@@ -46,3 +46,9 @@ Launch the Python interpreter and start by importing the necessary modules:
 .. code-block:: python
 
     from cmif import MyParser
+
+
+See Also
+--------
+
+The python cli `csv2cmi <https://github.com/saw-leipzig/csv2cmi>`_, written by `K. Rettinghaus <https://github.com/rettinghaus>`_, allows to create cmi files from csv input.
