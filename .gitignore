@@ -6,7 +6,8 @@ dev.*
 *-dev.*
 *_dev.*
 .profile
-test/output
+test/output/*
+!test/output/cmif.xml
 
 # editor temp files
 *.swp
