@@ -283,3 +283,10 @@ def pretty(elements):
     pretty print given elements
     """
     print(etree.tostring(elements, pretty_print=True).decode().strip())
+
+
+def tostr(element):
+    """
+    convert given element to str
+    """
+    return etree.tostring(element).decode().strip()
