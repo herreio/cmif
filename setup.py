@@ -16,7 +16,7 @@ setuptools.setup(
     description="Handle data in CMI-format.",
     long_description=README,
     url="https://github.com/herreio/cmif",
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(exclude=("test",)),
     include_package_data=True,
     install_requires=required,
     classifiers=[
