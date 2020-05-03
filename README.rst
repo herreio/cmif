@@ -24,6 +24,8 @@ You can install this package via `PyPI <https://pypi.org/project/cmif/>`_:
 
     git clone https://github.com/herreio/cmif.git
     cd cmif
+    utils/setup
+    source env/bin/activate
 
 Documentation
 -------------
