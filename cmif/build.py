@@ -8,6 +8,17 @@ from lxml import etree
 
 
 TEI_NS = "http://www.tei-c.org/ns/1.0"
+RNG_SCHEMA = "https://raw.githubusercontent.com/TEI-Correspondence-SIG/" + \
+    "CMIF/master/schema/cmi-customization.rng"
+PI_TEXT = "href=\""+RNG_SCHEMA+"\" type=\"application/xml\" schematypens" + \
+    "=\"http://relaxng.org/ns/structure/1.0\""
+
+
+def pi_rng():
+    """
+    create xml model processing instruction
+    """
+    return etree.ProcessingInstruction("xml-model", PI_TEXT)
 
 
 def tei_root(children=None):
@@ -243,6 +254,13 @@ def tei_p():
     return etree.Element("p")
 
 
+def add_pi(tree):
+    """
+    add xml-model processing instruction to given element tree
+    """
+    tree.getroot().addprevious(pi_rng())
+
+
 def add_child(parent, element):
     """
     add element to parent if element is not None
@@ -258,27 +276,6 @@ def add_children(parent, elements):
     if elements is not None:
         for child in elements:
             parent.append(child)
-
-# def add_child(parent, element):
-#     """
-#     add element to parent if element is not None
-#     """
-#     parent.append(element)
-
-
-# def add_children(parent, elements):
-#     """
-#     add elements to parent if elements is not None
-#     """
-#     for element in elements:
-#         parent.append(element)
-#     added = []
-#     if elements is not None:
-#         for element in elements:
-#             added.append(add_child(parent, element))
-#         if any(added):
-#             return True
-#     return False
 
 
 def pretty(elements):
