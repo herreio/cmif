@@ -6,6 +6,7 @@ dev.*
 *-dev.*
 *_dev.*
 .profile
+test/output
 
 # editor temp files
 *.swp
