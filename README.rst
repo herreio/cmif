@@ -7,7 +7,7 @@ cmif
 Introduction
 ------------
 
-This is a simple python package to handle data in CMI-format.
+This is a simple python package to handle data in `CMI-format <https://github.com/TEI-Correspondence-SIG/CMIF>`_.
 
 Installation
 ------------
