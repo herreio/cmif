@@ -85,12 +85,12 @@ def tei_email(elem_text):
     return email
 
 
-def tei_publication_stmt(childrens=None):
+def tei_publication_stmt(children=None):
     """
     create TEI element <publicationStmt> with (optional) children
     """
     publication_stmt = etree.Element("publicationStmt")
-    add_children(publication_stmt, childrens)
+    add_children(publication_stmt, children)
     return publication_stmt
 
 
@@ -146,11 +146,13 @@ def tei_license(elem_text="", attrib_target=""):
     return license
 
 
-def tei_source_desc():
+def tei_source_desc(children=None):
     """
     create TEI element <sourceDesc>
     """
-    pass
+    source_desc = etree.Element("sourceDesc")
+    add_children(source_desc, children)
+    return source_desc
 
 
 def tei_bibl(elem_text, attrib_type):
@@ -163,29 +165,33 @@ def tei_bibl(elem_text, attrib_type):
     return bibl
 
 
-def tei_profile_desc():
+def tei_profile_desc(children=None):
     """
     create TEI element <profileDesc>
     """
-    pass
+    profile_desc = etree.Element("profileDesc")
+    add_children(profile_desc, children)
+    return profile_desc
 
 
-def tei_corresp_desc(attrib_ref=""):
+def tei_corresp_desc(attrib_ref="", children=None):
     """
     create TEI <correspDesc> element with @ref
     """
     corresp_desc = etree.Element("correspDesc")
     if attrib_ref != "":
         corresp_desc.set("ref", attrib_ref)
+    add_children(corresp_desc, children)
     return corresp_desc
 
 
-def tei_corresp_action(attrib_type=""):
+def tei_corresp_action(attrib_type, children=None):
     """
     create TEI <correspAction> element with @type
     """
     corresp_action = etree.Element("correspAction")
     corresp_action.set("type", attrib_type)
+    add_children(corresp_action, children)
     return corresp_action
 
 
