@@ -1,2 +1,44 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0"/>
+<?xml-model href="https://raw.githubusercontent.com/TEI-Correspondence-SIG/CMIF/master/schema/cmi-customization.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Test output in CMI format from Python library cmif</title>
+        <editor>Donatus Herre <email>pypi@herre.io</email></editor>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>
+          <ref target="https://pypi.org/project/cmif/">cmif. Version latest</ref>
+        </publisher>
+        <idno type="url">https://raw.githubusercontent.com/herreio/cmif/master/test/output/cmif.xml</idno>
+        <date when="2020-05-03"/>
+        <availability>
+          <license target="https://creativecommons.org/licenses/by/4.0/">This file is licensed under the terms of the Creative-Commons-License CC-BY 4.0</license>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl type="online">Collected Imaginary Correspondences. URL: <ref target="https://example.com/collected-imaginary-correspondences">https://example.com/collected-imaginary-correspondences</ref></bibl>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <correspDesc ref="https://example.com/collected-imaginary-correspondences/happy-next-bday/">
+        <correspAction type="sent">
+          <persName ref="http://d-nb.info/gnd/1122220138">Anselm Schenkluhn</persName>
+          <date when="2020-12-27"/>
+          <placeName ref="https://www.geonames.org/2950159">Berlin</placeName>
+        </correspAction>
+        <correspAction type="recieved">
+          <persName ref="http://d-nb.info/gnd/1096364328">Kolja Linowitzki</persName>
+          <date when="2021-01-02"/>
+          <placeName ref="https://www.geonames.org/2935022">Dresden</placeName>
+        </correspAction>
+      </correspDesc>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <p/>
+    </body>
+  </text>
+</TEI>
