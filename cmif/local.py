@@ -9,12 +9,12 @@ import os
 from lxml import etree
 
 
-def writer(tree, file="cmif.xml", path="."):
+def writer(root, file="cmif.xml", path="."):
     """
-    write given element tree to file at path
+    write given root element to file at path
     """
     parser = etree.XMLParser(remove_blank_text=True)
-    xml = etree.ElementTree(tree, parser=parser)
+    xml = etree.ElementTree(root, parser=parser)
     if path and not os.path.exists(path):
         os.makedirs(path)
     out = os.path.join(path, file)
