@@ -214,7 +214,7 @@ def tei_place_name(elem_text, attrib_ref=""):
     """
     place_name = etree.Element("placeName")
     place_name.text = elem_text
-    place_name.set("ref", attrib_ref)
+    add_attrib(place_name, "ref", attrib_ref)
     return place_name
 
 
@@ -224,8 +224,17 @@ def tei_pers_name(elem_text, attrib_ref=""):
     """
     pers_name = etree.Element("persName")
     pers_name.text = elem_text
-    pers_name.set("ref", attrib_ref)
+    add_attrib(pers_name, "ref", attrib_ref)
     return pers_name
+
+
+def tei_org_name(elem_text):
+    """
+    create TEI element <orgName> with given element text
+    """
+    org_name = etree.Element("orgName")
+    org_name.text = elem_text
+    return org_name
 
 
 def tei_text_empty():
