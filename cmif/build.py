@@ -4,9 +4,10 @@
 build XML data in CMI format
 """
 
+import uuid
 from lxml import etree
 
-
+XML_NS = "http://www.w3.org/XML/1998/namespace"
 TEI_NS = "http://www.tei-c.org/ns/1.0"
 RNG_SCHEMA = "https://raw.githubusercontent.com/TEI-Correspondence-SIG/" + \
     "CMIF/master/schema/cmi-customization.rng"
@@ -19,6 +20,13 @@ def pi_rng():
     create processing instruction <?xml-model?>
     """
     return etree.ProcessingInstruction("xml-model", PI_TEXT)
+
+
+def ns_xml(attrib):
+    """
+    add xml namespace to given attribute
+    """
+    return "{" + XML_NS + "}" + attrib
 
 
 def tei_root(children=None):
@@ -155,13 +163,17 @@ def tei_source_desc(children=None):
     return source_desc
 
 
-def tei_bibl(elem_text, attrib_type):
+def tei_bibl(elem_text, attrib_type, attrib_xml_id=None, domain=None):
     """
     create TEI element <bibl> with given text and @type
     """
     bibl = etree.Element("bibl")
     bibl.set("type", attrib_type)
     bibl.text = elem_text
+    if attrib_xml_id is None:
+        attrib_xml_id = str(uuid.uuid3(uuid.NAMESPACE_URL, domain)) if domain \
+            else str(uuid.uuid4())
+    bibl.set(ns_xml("id"), attrib_xml_id)
     return bibl
 
 
@@ -197,7 +209,8 @@ def tei_corresp_action(attrib_type, children=None):
     return corresp_action
 
 
-def tei_date(attrib_when="", attrib_from="", attrib_to=""):
+def tei_date(attrib_when="", attrib_from="", attrib_to="",
+             attrib_not_before="", attrib_not_after=""):
     """
     create TEI element <date> with @when or @from and @to
     """
@@ -205,6 +218,8 @@ def tei_date(attrib_when="", attrib_from="", attrib_to=""):
     add_attrib(date, "when", attrib_when)
     add_attrib(date, "from", attrib_from)
     add_attrib(date, "to", attrib_to)
+    add_attrib(date, "notBefore", attrib_not_before)
+    add_attrib(date, "notAfter", attrib_not_after)
     return date
 
 
