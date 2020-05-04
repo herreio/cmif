@@ -174,13 +174,15 @@ def tei_profile_desc(children=None):
     return profile_desc
 
 
-def tei_corresp_desc(attrib_ref="", children=None):
+def tei_corresp_desc(attrib_key="", attrib_ref="",
+                     attrib_source="", children=None):
     """
     create TEI element <correspDesc> with @ref
     """
     corresp_desc = etree.Element("correspDesc")
-    if attrib_ref != "":
-        corresp_desc.set("ref", attrib_ref)
+    add_attrib(corresp_desc, "key", attrib_key)
+    add_attrib(corresp_desc, "ref", attrib_ref)
+    add_attrib(corresp_desc, "source", attrib_source)
     add_children(corresp_desc, children)
     return corresp_desc
 
@@ -200,11 +202,9 @@ def tei_date(attrib_when="", attrib_from="", attrib_to=""):
     create TEI element <date> with @when or @from and @to
     """
     date = etree.Element("date")
-    if attrib_when != "":
-        date.set("when", attrib_when)
-    elif attrib_from != "" and attrib_to != "":
-        date.set("from", attrib_from)
-        date.set("to", attrib_to)
+    add_attrib(date, "when", attrib_when)
+    add_attrib(date, "from", attrib_from)
+    add_attrib(date, "to", attrib_to)
     return date
 
 
@@ -265,6 +265,14 @@ def add_pi(tree):
     add processing instruction <?xml-model?> to given element tree
     """
     tree.getroot().addprevious(pi_rng())
+
+
+def add_attrib(element, name, value):
+    """
+    add attribute to element if value != ""
+    """
+    if value != "":
+        element.set(name, value)
 
 
 def add_child(parent, element):
