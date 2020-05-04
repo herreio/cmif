@@ -7,7 +7,7 @@ Creator:          D. Herre
 GitHub:       herreio/cmif
 
 Created:        2020-05-03
-Modified:       2020-05-03
+Modified:       2020-05-04
 """
 
 from cmif import build, local
