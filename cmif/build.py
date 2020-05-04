@@ -13,6 +13,9 @@ RNG_SCHEMA = "https://raw.githubusercontent.com/TEI-Correspondence-SIG/" + \
     "CMIF/master/schema/cmi-customization.rng"
 PI_TEXT = "href=\""+RNG_SCHEMA+"\" type=\"application/xml\" schematypens" + \
     "=\"http://relaxng.org/ns/structure/1.0\""
+CC_TEXT = "This file is licensed under the terms " \
+            + "of the Creative-Commons-License CC-BY 4.0"
+CC_URL = "https://creativecommons.org/licenses/by/4.0/"
 
 
 def pi_rng():
@@ -145,9 +148,8 @@ def tei_license(elem_text="", attrib_target=""):
     create TEI element <licence> with (optional) text and @target
     """
     if elem_text == "" and attrib_target == "":
-        elem_text = "This file is licensed under the terms" \
-                        + " of the Creative-Commons-License CC-BY 4.0"
-        attrib_target = "https://creativecommons.org/licenses/by/4.0/"
+        elem_text = CC_TEXT
+        attrib_target = CC_URL
     license = etree.Element("licence")
     license.set("target", attrib_target)
     license.text = elem_text
