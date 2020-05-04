@@ -45,8 +45,8 @@ pub_stmt = build.tei_publication_stmt([publisher, idno,
 
 # create <sourceDesc>
 ref_url = "https://github.com/herreio/benann/tree/master/data/de_lttr"
-bibl = build.tei_bibl("Briefe von Walter Benjamin aus dem Exil. URL: ",
-                      "online")
+bibl = build.tei_bibl("Benjamin Briefe aus dem Exil. URL: ",
+                      "online", domain=ref_url)
 ref = build.tei_ref(ref_url, ref_url)
 bibl.append(ref)
 source_desc = build.tei_source_desc([bibl])
