@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?xml-model href="https://raw.githubusercontent.com/TEI-Correspondence-SIG/CMIF/master/schema/cmi-customization.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<!-- Build with Python package cmif. -->
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
@@ -12,7 +13,7 @@
           <ref target="https://github.com/herreio">herreio</ref>
         </publisher>
         <idno type="url">https://raw.githubusercontent.com/herreio/cmif/master/test/output/cmif.xml</idno>
-        <date when="2020-05-04"/>
+        <date when="2020-05-11"/>
         <availability>
           <licence target="https://creativecommons.org/licenses/by/4.0/">This file is licensed under the terms of the Creative-Commons-License CC-BY 4.0</licence>
         </availability>
