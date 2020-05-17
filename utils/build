@@ -3,5 +3,5 @@ rm -rf build/
 rm -rf dist/
 rm -rf *.egg-info/
 source env/bin/activate
-python3 setup.py sdist bdist_wheel 
+python setup.py sdist bdist_wheel 
 deactivate
