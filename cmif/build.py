@@ -245,12 +245,13 @@ def tei_pers_name(elem_text, attrib_ref=""):
     return pers_name
 
 
-def tei_org_name(elem_text):
+def tei_org_name(elem_text, attrib_ref=""):
     """
     create TEI element <orgName> with given element text
     """
     org_name = etree.Element("orgName")
     org_name.text = elem_text
+    add_attrib(org_name, "ref", attrib_ref)
     return org_name
 
 
