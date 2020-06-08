@@ -39,7 +39,11 @@ def search(place, username=None):
             return None
     GEOPARAMS["q"] = place
     GEOPARAMS["username"] = username
-    result = requests.get(GEONAMES, params=GEOPARAMS).json()["geonames"][0]
+    result = requests.get(GEONAMES, params=GEOPARAMS).json()["geonames"]
+    if result == []:
+        print("no results for given query!")
+        return None
+    result = result[0]
     geoname = result["toponymName"]
     geonameId = "http://www.geonames.org/{0}".format(result["geonameId"])
     return geoname, geonameId
