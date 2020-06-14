@@ -25,14 +25,6 @@ local module
     :undoc-members:
     :show-inheritance:
 
-model module
--------------
-
-.. automodule:: cmif.model
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 retrieve module
 ---------------
 
@@ -53,6 +45,14 @@ authority module
 -----------------
 
 .. automodule:: cmif.authority.geonames
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+model module
+-------------
+
+.. automodule:: cmif.model
     :members:
     :undoc-members:
     :show-inheritance:
