@@ -13,7 +13,7 @@ from lxml.etree import RelaxNG
 
 def odd():
     """
-    get ODD of CMI format
+    get ODD specification of CMI format
     """
     return reader(os.path.join(os.path.dirname(__file__),
                                "standard/odd/cmi-customization.xml"))
@@ -21,7 +21,7 @@ def odd():
 
 def rng():
     """
-    get RNG of CMI format
+    get RNG schema of CMI format
     """
     return RelaxNG(
             reader(os.path.join(os.path.dirname(__file__),
