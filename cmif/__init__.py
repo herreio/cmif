@@ -7,3 +7,4 @@ from . import build
 from . import model
 from . import retrieve
 from . import authority
+from . import service

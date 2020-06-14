@@ -41,6 +41,14 @@ retrieve module
     :undoc-members:
     :show-inheritance:
 
+service module
+--------------
+
+.. automodule:: cmif.service
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 authority module
 -----------------
 
