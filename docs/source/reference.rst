@@ -9,6 +9,14 @@ build module
     :undoc-members:
     :show-inheritance:
 
+extract module
+-------------
+
+.. automodule:: cmif.extract
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 demo module
 ------------
 
