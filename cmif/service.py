@@ -18,9 +18,9 @@ ENTITIES = {
 
 
 def correspsearch(correspondent="", sender="", addressee="",
-                  startdate="", enddate="", place=None,
+                  startdate=None, enddate=None, place=None,
                   placeSender=None, placeAddressee=None,
-                  available="", strictDate=False, endpoint=TEI_XML):
+                  available=None, strictDate=False, endpoint=TEI_XML):
     """
     | query data in CMI format via correspSearch API by given parameters
     | available endpoints: TEI_XML (default) / TEI_JSON
@@ -41,16 +41,20 @@ def correspsearch(correspondent="", sender="", addressee="",
         params = {
           "addressee": addressee
         }
-    params["startdate"] = startdate
-    params["enddate"] = enddate
-    params["strictDate"] = strictDate
-    params["available"] = available
+    if startdate is not None:
+        params["startdate"] = startdate
+    if enddate is not None:
+        params["enddate"] = enddate
+    if strictDate:
+        params["strictDate"] = strictDate
     if place is not None:
         params["place"] = place
     if placeSender is not None:
         params["placeSender"] = placeSender
     if placeAddressee is not None:
         params["placeAddressee"] = placeAddressee
+    if available is not None:
+        params["available"] = available
     try:
         response = requests.get(endpoint, params=params)
         if response.status_code == 200:
@@ -62,7 +66,12 @@ def correspsearch(correspondent="", sender="", addressee="",
                     return {}
             else:
                 parser = etree.XMLParser(remove_blank_text=True)
-                return etree.fromstring(response.content, parser=parser)
+                tei = etree.fromstring(response.content, parser=parser)
+                if tei.text is None:    # text is None if query is valid
+                    return tei
+                else:
+                    print("Invalid query!")
+                    return None
         else:
             print("cmif.service.correspsearch:")
             print("request is not ok!")
