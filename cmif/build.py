@@ -9,6 +9,7 @@ from lxml import etree
 
 XML_NS = "http://www.w3.org/XML/1998/namespace"
 TEI_NS = "http://www.tei-c.org/ns/1.0"
+CS_NS = "http://www.bbaw.de/telota/correspSearch"
 RNG_SCHEMA = "https://raw.githubusercontent.com/TEI-Correspondence-SIG/" + \
     "CMIF/master/schema/cmi-customization.rng"
 PI_TEXT = "href=\""+RNG_SCHEMA+"\" type=\"application/xml\" schematypens" + \
@@ -30,6 +31,13 @@ def ns_xml(attrib):
     add xml namespace to given attribute
     """
     return "{" + XML_NS + "}" + attrib
+
+
+def ns_cs(attrib):
+    """
+    add correspSearch namespace to given attribute
+    """
+    return "{" + CS_NS + "}" + attrib
 
 
 def tei_root(children=None):
