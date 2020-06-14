@@ -22,9 +22,9 @@ def correspsearch(correspondent="", sender="", addressee="",
                   placeSender=None, placeAddressee=None,
                   available="", strictDate=False, endpoint=TEI_XML):
     """
-    query data in CMI format via correspSearch API by given parameters
-    available endpoints: TEI_XML (default) / TEI_JSON
-    see https://correspsearch.net/index.xql?id=api for details
+    | query data in CMI format via correspSearch API by given parameters
+    | available endpoints: TEI_XML (default) / TEI_JSON
+    | see https://correspsearch.net/index.xql?id=api for details
     """
     if correspondent == "" and sender == "" and addressee == "":
         print("need to specify correspondent!")
