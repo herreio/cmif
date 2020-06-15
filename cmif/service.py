@@ -17,7 +17,7 @@ ENTITIES = {
 }
 
 
-def correspsearch(correspondent="", sender="", addressee="",
+def correspsearch(correspondent=None, sender=None, addressee=None,
                   startdate=None, enddate=None, place=None,
                   placeSender=None, placeAddressee=None,
                   available=None, strictDate=False, endpoint=TEI_XML):
@@ -26,21 +26,16 @@ def correspsearch(correspondent="", sender="", addressee="",
     | available endpoints: TEI_XML (default) / TEI_JSON
     | see https://correspsearch.net/index.xql?id=api for details
     """
-    if correspondent == "" and sender == "" and addressee == "":
-        print("need to specify correspondent!")
+    if correspondent == sender == addressee and sender is None:
+        print("specify correspondent, sender or addressee!")
         return None
-    if correspondent != "":
-        params = {
-          "correspondent": correspondent
-        }
-    if sender != "":
-        params = {
-          "sender": sender
-        }
-    if addressee != "":
-        params = {
-          "addressee": addressee
-        }
+    params = {}
+    if correspondent is not None:
+        params["correspondent"] = correspondent
+    if sender is not None:
+        params["sender"] = sender
+    if addressee is not None:
+        params["addressee"] = addressee
     if startdate is not None:
         params["startdate"] = startdate
     if enddate is not None:
