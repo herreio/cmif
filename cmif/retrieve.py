@@ -16,8 +16,7 @@ def remote_file(url):
     try:
         response = requests.get(url)
         if response.status_code == 200:
-            parser = etree.XMLParser(remove_blank_text=True)
-            return etree.fromstring(response.content, parser=parser)
+            return etree.fromstring(response.content)
         print("requesting remote file failed!")
         print("url of request:")
         print(response.url)
