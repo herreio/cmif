@@ -92,8 +92,8 @@ def bibl_text(data, multi=False):
     | set multi=True if data originates from correspSearch API
     """
     bibl_data = bibl(data, multi=multi)
-    return re.sub("[ \r\n]+", " ", " ".join([l.strip() for l in list(bibl_data.itertext())])) if not multi else \
-        [re.sub("[ \r\n]+", " ", " ".join([l.strip() for l in list(b.itertext())])) for b in bibl_data]
+    return re.sub("[ \r\n]+", " ", "".join([l for l in list(bibl_data.itertext())]).strip()) if not multi else \
+        [re.sub("[ \r\n]+", " ", "".join([l for l in list(b.itertext())]).strip()) for b in bibl_data]
 
 
 def correspdesc(data):

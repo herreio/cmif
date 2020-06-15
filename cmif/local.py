@@ -26,5 +26,4 @@ def reader(filepath):
     """
     read xml data from given file path
     """
-    parser = etree.XMLParser(remove_blank_text=True)
-    return etree.parse(filepath, parser=parser)
+    return etree.parse(filepath)

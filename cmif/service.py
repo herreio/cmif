@@ -65,9 +65,8 @@ def correspsearch(correspondent="", sender="", addressee="",
                     print("Invalid query!")
                     return {}
             else:
-                parser = etree.XMLParser(remove_blank_text=True)
-                tei = etree.fromstring(response.content, parser=parser)
-                if tei.text is None:    # text is None if query is valid
+                tei = etree.fromstring(response.content)
+                if not tei.text == "Invalid query.":
                     return tei
                 else:
                     print("Invalid query!")
