@@ -66,9 +66,10 @@ def correspsearch(correspondent="", sender="", addressee="",
                     return {}
             else:
                 tei = etree.fromstring(response.content)
-                if not tei.text == "Invalid query.":
+                if tei.text != "Invalid query.":
                     return tei
                 else:
+                    print("cmif.service.correspsearch:")
                     print("Invalid query!")
                     return None
         else:
