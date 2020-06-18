@@ -214,6 +214,9 @@ def tei_corresp_action(attrib_type, children=None):
     create TEI element <correspAction> with @type
     """
     corresp_action = etree.Element("correspAction")
+    if attrib_type not in ["sent", "received"]:
+        print("@type has to be 'sent' or 'received'!")
+        return None
     corresp_action.set("type", attrib_type)
     add_children(corresp_action, children)
     return corresp_action
