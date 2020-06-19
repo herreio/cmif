@@ -71,10 +71,10 @@ senders_place = build.tei_place_name("Berlin",
 sent = build.tei_corresp_action("sent",
                                 children=[author, sent_date, senders_place])
 
-# create <correspAction> with @type="recieved"
+# create <correspAction> with @type="received"
 addressee = build.tei_pers_name("Gershom Scholem",
                                 "http://d-nb.info/gnd/118610295")
-recieved = build.tei_corresp_action("recieved", children=[addressee])
+recieved = build.tei_corresp_action("received", children=[addressee])
 
 # create <correspDesc> with @ref and child nodes
 letter_ref = "https://raw.githubusercontent.com/herreio/benann/master/data/" \
