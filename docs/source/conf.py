@@ -24,9 +24,9 @@ copyright = '2020, Donatus Herre'
 author = 'Donatus Herre'
 
 # The short X.Y version
-version = '2019.6.19'
+version = '2019.6.20'
 # The full version, including alpha/beta/rc tags
-release = '2019.6.19'
+release = '2019.6.20'
 
 
 # -- General configuration ---------------------------------------------------
