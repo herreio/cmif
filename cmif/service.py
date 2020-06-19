@@ -19,15 +19,18 @@ ENTITIES = {
 
 def correspsearch(correspondent=None, sender=None, addressee=None,
                   startdate=None, enddate=None, place=None,
-                  placeSender=None, placeAddressee=None, publication=None,
+                  placeSender=None, placeAddressee=None,
+                  cmiFile=None, publication=None,
                   available=None, strictDate=False, endpoint=TEI_XML):
     """
     | query data in CMI format via correspSearch API by given parameters
     | available endpoints: TEI_XML (default) / TEI_JSON
     | see https://correspsearch.net/index.xql?id=api for details
     """
-    if correspondent == sender == addressee == publication and sender is None:
-        print("specify correspondent, sender, addressee or publication!")
+    if correspondent == sender == addressee == publication == cmiFile \
+            and sender is None:
+        print("please specify one of the following parameters:")
+        print("correspondent / sender / addressee / publication / cmiFile")
         return None
     params = {}
     if correspondent is not None:
@@ -37,8 +40,13 @@ def correspsearch(correspondent=None, sender=None, addressee=None,
     if addressee is not None:
         params["addressee"] = addressee
     if publication is not None:
-        params["correspondent"] = "all"
         params["publication"] = publication
+        if correspondent is None:
+            params["correspondent"] = "all"
+    if cmiFile is not None:
+        params["cmiFile"] = cmiFile
+        if correspondent is None:
+            params["correspondent"] = "all"
     if startdate is not None:
         params["startdate"] = startdate
     if enddate is not None:
