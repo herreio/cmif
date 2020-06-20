@@ -15,6 +15,47 @@ def title(data):
     return data.find(".//title", namespaces=data.nsmap).text
 
 
+def editor(data, multi=False):
+    """
+    | extract TEI element <editor>
+    | set multi to True if multiple editors exist
+    """
+    return data.find(".//editor", namespaces=data.nsmap) if not multi else \
+        data.findall(".//editor", namespaces=data.nsmap)
+
+
+def editor_name(data, multi=False):
+    """
+    | extract text of TEI element <editor>
+    | set multi to True if multiple editors exist
+    """
+    return editor(data, multi=multi).text.strip() if not multi else \
+        [e.text.strip() for e in editor(data, multi=multi)]
+
+
+def editor_email(data, multi=False):
+    """
+    | extract text of TEI element <email> from parent <editor>
+    | set multi to True if multiple editors exist
+    """
+    return editor(data, multi=multi).find(".//email", namespaces=data.nsmap).text if not multi else \
+        [e.find(".//email", namespaces=data.nsmap).text for e in editor(data, multi=multi)]
+
+
+def publisher(data):
+    """
+    extract text from child <ref> of TEI element <publisher>
+    """
+    return data.find(".//publisher/ref", namespaces=data.nsmap).text
+
+
+def publisher_target(data):
+    """
+    extract @target from child <ref> of TEI element <publisher>
+    """
+    return data.find(".//publisher/ref", namespaces=data.nsmap).attrib["target"]
+
+
 def idno(data):
     """
     extract text of TEI element <idno>
@@ -43,24 +84,10 @@ def license_target(data):
     return data.find(".//licence", namespaces=data.nsmap).attrib["target"]
 
 
-def publisher(data):
-    """
-    extract text from child <ref> of TEI element <publisher>
-    """
-    return data.find(".//publisher/ref", namespaces=data.nsmap).text
-
-
-def publisher_target(data):
-    """
-    extract @target from child <ref> of TEI element <publisher>
-    """
-    return data.find(".//publisher/ref", namespaces=data.nsmap).attrib["target"]
-
-
 def bibl(data, multi=False):
     """
     | extract TEI element <bibl>
-    | set multi=True if data originates from correspSearch API
+    | set multi to True if multiple references exist
     """
     return data.find(".//bibl", namespaces=data.nsmap) if not multi else \
         data.findall(".//bibl", namespaces=data.nsmap)
@@ -69,7 +96,7 @@ def bibl(data, multi=False):
 def bibl_id(data, multi=False):
     """
     | extract @xml:id from TEI element <bibl>
-    | set multi=True if data originates from correspSearch API
+    | set multi to True if multiple references exist
     """
     bibl_data = bibl(data, multi=multi)
     return bibl_data.attrib[ns_xml("id")] if not multi else \
@@ -79,7 +106,7 @@ def bibl_id(data, multi=False):
 def bibl_type(data, multi=False):
     """
     | extract @type from TEI element <bibl>
-    | set multi=True if data originates from correspSearch API
+    | set multi to True if multiple references exist
     """
     bibl_data = bibl(data, multi=multi)
     return bibl_data.attrib["type"] if not multi else \
@@ -89,7 +116,7 @@ def bibl_type(data, multi=False):
 def bibl_text(data, multi=False):
     """
     | extract text of TEI element <bibl>
-    | set multi=True if data originates from correspSearch API
+    | set multi to True if multiple references exist
     """
     bibl_data = bibl(data, multi=multi)
     return re.sub("[ \r\n]+", " ", "".join([l for l in list(bibl_data.itertext())]).strip()) if not multi else \
@@ -98,14 +125,14 @@ def bibl_text(data, multi=False):
 
 def correspdesc(data):
     """
-    extract TEI element(s) <correspDesc>
+    extract TEI elements <correspDesc>
     """
     return data.findall(".//correspDesc", namespaces=data.nsmap)
 
 
 def correspdesc_source(data):
     """
-    extract @source from TEI element(s) <correspDesc>
+    extract @source from TEI elements <correspDesc>
     """
     correspdesc_data = correspdesc(data)
     try:
