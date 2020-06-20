@@ -175,7 +175,10 @@ def tei_source_desc(children=None):
 
 def tei_bibl(elem_text, attrib_type, attrib_xml_id=None, domain=None):
     """
-    create TEI element <bibl> with given text and @type
+    | create TEI element <bibl> with given text, @type and (optional) @xml:id
+    | if @xml:id is None a uuid is being generated
+    | if domain is None the uuid will be random
+    | if domain is not None the uuid will be static
     """
     bibl = etree.Element("bibl")
     if attrib_type not in ["print", "online", "hybrid"]:
@@ -238,7 +241,7 @@ def tei_bibl_id(domain=None):
 
 def tei_profile_desc(children=None):
     """
-    create TEI element <profileDesc>
+    create TEI element <profileDesc> with (optional) children
     """
     profile_desc = etree.Element("profileDesc")
     add_children(profile_desc, children)
@@ -248,7 +251,7 @@ def tei_profile_desc(children=None):
 def tei_corresp_desc(attrib_key="", attrib_ref="",
                      attrib_source="", children=None):
     """
-    create TEI element <correspDesc> with @ref
+    create TEI element <correspDesc> with @ref, @source and (optional) children
     """
     corresp_desc = etree.Element("correspDesc")
     add_attrib(corresp_desc, "key", attrib_key)
@@ -260,7 +263,7 @@ def tei_corresp_desc(attrib_key="", attrib_ref="",
 
 def tei_corresp_action(attrib_type, children=None):
     """
-    create TEI element <correspAction> with @type
+    create TEI element <correspAction> with @type and (optional) children
     """
     corresp_action = etree.Element("correspAction")
     if attrib_type not in ["sent", "received"]:
@@ -272,9 +275,11 @@ def tei_corresp_action(attrib_type, children=None):
 
 
 def tei_date(attrib_when="", attrib_from="", attrib_to="",
-             attrib_not_before="", attrib_not_after=""):
+             attrib_not_before="", attrib_not_after="",
+             attrib_evidence=None, attrib_cert=None):
     """
-    create TEI element <date> with @when or @from and @to
+    | create TEI element <date> with @when or @from and @to or
+    | @notBefore and @notAfter and (optional) @evidence and @cert
     """
     date = etree.Element("date")
     add_attrib(date, "when", attrib_when)
@@ -282,36 +287,58 @@ def tei_date(attrib_when="", attrib_from="", attrib_to="",
     add_attrib(date, "to", attrib_to)
     add_attrib(date, "notBefore", attrib_not_before)
     add_attrib(date, "notAfter", attrib_not_after)
+    if attrib_evidence is not None:
+        add_attrib(date, "evidence", attrib_evidence)
+        if attrib_cert is not None:
+            add_attrib(date, "cert", attrib_cert)
     return date
 
 
-def tei_place_name(elem_text, attrib_ref=""):
+def tei_place_name(elem_text, attrib_ref="",
+                   attrib_evidence=None, attrib_cert=None):
     """
-    create TEI element <placeName> with given element text and @ref
+    | create TEI element <placeName> with given element text, @ref
+    | and (optional) @evidence and @cert
     """
     place_name = etree.Element("placeName")
     place_name.text = elem_text
     add_attrib(place_name, "ref", attrib_ref)
+    if attrib_evidence is not None:
+        add_attrib(place_name, "evidence", attrib_evidence)
+        if attrib_cert is not None:
+            add_attrib(place_name, "cert", attrib_cert)
     return place_name
 
 
-def tei_pers_name(elem_text, attrib_ref=""):
+def tei_pers_name(elem_text, attrib_ref="",
+                  attrib_evidence=None, attrib_cert=None):
     """
-    create TEI element <persName> with given element text and @ref
+    | create TEI element <persName> with given element text, @ref
+    | and (optional) @evidence and @cert
     """
     pers_name = etree.Element("persName")
     pers_name.text = elem_text
     add_attrib(pers_name, "ref", attrib_ref)
+    if attrib_evidence is not None:
+        add_attrib(pers_name, "evidence", attrib_evidence)
+        if attrib_cert is not None:
+            add_attrib(pers_name, "cert", attrib_cert)
     return pers_name
 
 
-def tei_org_name(elem_text, attrib_ref=""):
+def tei_org_name(elem_text, attrib_ref="",
+                 attrib_evidence=None, attrib_cert=None):
     """
-    create TEI element <orgName> with given element text
+    | create TEI element <orgName> with given element text, @ref
+    | and (optional) @evidence and @cert
     """
     org_name = etree.Element("orgName")
     org_name.text = elem_text
     add_attrib(org_name, "ref", attrib_ref)
+    if attrib_evidence is not None:
+        add_attrib(org_name, "evidence", attrib_evidence)
+        if attrib_cert is not None:
+            add_attrib(org_name, "cert", attrib_cert)
     return org_name
 
 
@@ -379,15 +406,15 @@ def add_children(parent, elements):
             parent.append(child)
 
 
-def pretty(elements):
-    """
-    pretty print given elements
-    """
-    print(etree.tostring(elements, pretty_print=True).decode().strip())
-
-
 def tostr(element):
     """
     convert given element to str
     """
     return etree.tostring(element).decode().strip()
+
+
+def pretty(element):
+    """
+    pretty print given elements
+    """
+    print(tostr(element))
