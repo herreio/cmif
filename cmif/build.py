@@ -194,8 +194,8 @@ def tei_bibl_id(domain=None):
     | generate uuid for @xml:id of TEI element <bibl> by given domain
     | if domain is None a random uuid is being generated
     """
+    found = False
     if domain is not None:
-        found = False
         while not found:
             domain_uuid = str(uuid.uuid3(uuid.NAMESPACE_URL, domain))
             if domain_uuid[0].isalpha():
@@ -225,12 +225,11 @@ def tei_bibl_id(domain=None):
                 print("could not create uuid valid as xml:id from given domain!")
                 print("try another one? meanwhile generating a random uuid...")
             while not found:
-                domain_uuid = attrib_xml_id = str(uuid.uuid4())
+                domain_uuid = str(uuid.uuid4())
                 if domain_uuid[0].isalpha():
                     return domain_uuid
     else:
         print("no domain given! generating a random uuid...")
-        found = False
         while not found:
             domain_uuid = str(uuid.uuid4())
             if domain_uuid[0].isalpha():
