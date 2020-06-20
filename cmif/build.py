@@ -184,8 +184,38 @@ def tei_bibl(elem_text, attrib_type, attrib_xml_id=None, domain=None):
     bibl.set("type", attrib_type)
     bibl.text = elem_text
     if attrib_xml_id is None:
-        attrib_xml_id = str(uuid.uuid3(uuid.NAMESPACE_URL, domain)) if domain \
-            else str(uuid.uuid4())
+        if domain is not None:
+            found = False
+            while not found:
+                domain_uuid = str(uuid.uuid3(uuid.NAMESPACE_URL, domain))
+                if domain_uuid[0].isalpha():
+                    attrib_xml_id = domain_uuid
+                    found = True
+                    break
+                domain_uuid = str(uuid.uuid3(uuid.NAMESPACE_DNS, domain))
+                if domain_uuid[0].isalpha():
+                    attrib_xml_id = domain_uuid
+                    found = True
+                    break
+                domain_uuid = str(uuid.uuid5(uuid.NAMESPACE_URL, domain))
+                if domain_uuid[0].isalpha():
+                    attrib_xml_id = domain_uuid
+                    found = True
+                    break
+                domain_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, domain))
+                if domain_uuid[0].isalpha():
+                    attrib_xml_id = domain_uuid
+                    found = True
+                    break
+                if not found:
+                    print("could not create uuid valid as xml:id from given domain!")
+                    print("try another one? meanwhile I am generating a random uuid...")
+                while not found:
+                    domain_uuid = attrib_xml_id = str(uuid.uuid4())
+                    if domain_uuid[0].isalpha():
+                        attrib_xml_id = domain_uuid
+                        found = True
+                        break
     bibl.set(ns_xml("id"), attrib_xml_id)
     return bibl
 
