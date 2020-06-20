@@ -26,4 +26,4 @@ def reader(filepath):
     """
     read xml data from given file path
     """
-    return etree.parse(filepath)
+    return etree.parse(filepath).getroot()
