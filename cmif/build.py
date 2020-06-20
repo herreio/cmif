@@ -184,40 +184,57 @@ def tei_bibl(elem_text, attrib_type, attrib_xml_id=None, domain=None):
     bibl.set("type", attrib_type)
     bibl.text = elem_text
     if attrib_xml_id is None:
-        if domain is not None:
-            found = False
-            while not found:
-                domain_uuid = str(uuid.uuid3(uuid.NAMESPACE_URL, domain))
-                if domain_uuid[0].isalpha():
-                    attrib_xml_id = domain_uuid
-                    found = True
-                    break
-                domain_uuid = str(uuid.uuid3(uuid.NAMESPACE_DNS, domain))
-                if domain_uuid[0].isalpha():
-                    attrib_xml_id = domain_uuid
-                    found = True
-                    break
-                domain_uuid = str(uuid.uuid5(uuid.NAMESPACE_URL, domain))
-                if domain_uuid[0].isalpha():
-                    attrib_xml_id = domain_uuid
-                    found = True
-                    break
-                domain_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, domain))
-                if domain_uuid[0].isalpha():
-                    attrib_xml_id = domain_uuid
-                    found = True
-                    break
-                if not found:
-                    print("could not create uuid valid as xml:id from given domain!")
-                    print("try another one? meanwhile I am generating a random uuid...")
-                while not found:
-                    domain_uuid = attrib_xml_id = str(uuid.uuid4())
-                    if domain_uuid[0].isalpha():
-                        attrib_xml_id = domain_uuid
-                        found = True
-                        break
+        attrib_xml_id = tei_bibl_id(domain=domain)
     bibl.set(ns_xml("id"), attrib_xml_id)
     return bibl
+
+
+def tei_bibl_id(domain=None):
+    """
+    | generate uuid for @xml:id of TEI element <bibl> by given domain
+    | if domain is None a random uuid is being generated
+    """
+    if domain is not None:
+        found = False
+        while not found:
+            domain_uuid = str(uuid.uuid3(uuid.NAMESPACE_URL, domain))
+            if domain_uuid[0].isalpha():
+                return domain_uuid
+            domain_uuid = str(uuid.uuid3(uuid.NAMESPACE_DNS, domain))
+            if domain_uuid[0].isalpha():
+                return domain_uuid
+            domain_uuid = str(uuid.uuid3(uuid.NAMESPACE_OID, domain))
+            if domain_uuid[0].isalpha():
+                return domain_uuid
+            domain_uuid = str(uuid.uuid3(uuid.NAMESPACE_X500, domain))
+            if domain_uuid[0].isalpha():
+                return domain_uuid
+            domain_uuid = str(uuid.uuid5(uuid.NAMESPACE_URL, domain))
+            if domain_uuid[0].isalpha():
+                return domain_uuid
+            domain_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, domain))
+            if domain_uuid[0].isalpha():
+                return domain_uuid
+            domain_uuid = str(uuid.uuid5(uuid.NAMESPACE_OID, domain))
+            if domain_uuid[0].isalpha():
+                return domain_uuid
+            domain_uuid = str(uuid.uuid5(uuid.NAMESPACE_X500, domain))
+            if domain_uuid[0].isalpha():
+                return domain_uuid
+            if not found:
+                print("could not create uuid valid as xml:id from given domain!")
+                print("try another one? meanwhile generating a random uuid...")
+            while not found:
+                domain_uuid = attrib_xml_id = str(uuid.uuid4())
+                if domain_uuid[0].isalpha():
+                    return domain_uuid
+    else:
+        print("no domain given! generating a random uuid...")
+        found = False
+        while not found:
+            domain_uuid = str(uuid.uuid4())
+            if domain_uuid[0].isalpha():
+                return domain_uuid
 
 
 def tei_profile_desc(children=None):
