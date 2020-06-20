@@ -178,8 +178,8 @@ def tei_bibl(elem_text, attrib_type, attrib_xml_id=None, domain=None):
     create TEI element <bibl> with given text and @type
     """
     bibl = etree.Element("bibl")
-    if attrib_type not in ["print", "online"]:
-        print("@type has to be 'print' or 'online'!")
+    if attrib_type not in ["print", "online", "hybrid"]:
+        print("@type has to be 'print', 'online' or 'hybrid'!")
         return None
     bibl.set("type", attrib_type)
     bibl.text = elem_text
