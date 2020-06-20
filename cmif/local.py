@@ -14,7 +14,7 @@ def writer(root, file="cmif.xml", path="."):
     write given root element to file at path
     """
     parser = etree.XMLParser(remove_blank_text=True)
-    root.addprevious(etree.Comment(" Build with Python package cmif. "))
+    root.addprevious(etree.Comment(" Built with Python package cmif. "))
     xml = etree.ElementTree(root, parser=parser)
     if not os.path.exists(path):
         os.makedirs(path)
