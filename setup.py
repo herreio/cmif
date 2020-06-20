@@ -9,7 +9,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name="cmif",
-    version="2020.6.25",
+    version="2020.6.26",
     author="Donatus Herre",
     author_email="pypi@herre.io",
     license="MIT",
