@@ -6,6 +6,7 @@ build XML data in CMI format
 
 import uuid
 from lxml import etree
+from .model import rng
 
 XML_NS = "http://www.w3.org/XML/1998/namespace"
 TEI_NS = "http://www.tei-c.org/ns/1.0"
@@ -266,8 +267,11 @@ def tei_corresp_action(attrib_type, children=None):
     create TEI element <correspAction> with @type and (optional) children
     """
     corresp_action = etree.Element("correspAction")
-    if attrib_type not in ["sent", "received"]:
-        print("@type has to be 'sent' or 'received'!")
+    if attrib_type not in ["sent", "received", "transmitted",
+                           "forwarded", "redirected"]:
+        print("can not create <correspAction> with given value of @type!")
+        print("possible values for @type:")
+        print("'sent', 'received', 'transmitted', 'redirected or 'forwarded'")
         return None
     corresp_action.set("type", attrib_type)
     add_children(corresp_action, children)
@@ -278,19 +282,33 @@ def tei_date(attrib_when="", attrib_from="", attrib_to="",
              attrib_not_before="", attrib_not_after="",
              attrib_evidence=None, attrib_cert=None):
     """
-    | create TEI element <date> with @when or @from and @to or
-    | @notBefore and @notAfter and (optional) @evidence and @cert
+    | create TEI element <date> with @when, @from, @to, @notBefore or @notAfter
+    | and (optional) @evidence and @cert
     """
     date = etree.Element("date")
+    if attrib_when == attrib_from == attrib_to == \
+            attrib_not_before == attrib_not_after and attrib_to == "":
+        print("please pass either @when, @from, @to, @notBefore or @notAfter!")
+        return None
     add_attrib(date, "when", attrib_when)
     add_attrib(date, "from", attrib_from)
     add_attrib(date, "to", attrib_to)
     add_attrib(date, "notBefore", attrib_not_before)
     add_attrib(date, "notAfter", attrib_not_after)
     if attrib_evidence is not None:
-        add_attrib(date, "evidence", attrib_evidence)
-        if attrib_cert is not None:
+        if attrib_evidence in ["internal", "external", "conjecture"]:
+            add_attrib(date, "evidence", attrib_evidence)
+        else:
+            print("can not set @evidence with given value!")
+            print("possible values for @evidence:")
+            print("'internal', 'external' or 'conjecture'")
+    if attrib_cert is not None:
+        if attrib_cert in ["low", "medium", "high", "unknown"]:
             add_attrib(date, "cert", attrib_cert)
+        else:
+            print("can not set @cert with given value!")
+            print("possible values for @cert:")
+            print("'high', 'medium', 'low' or 'unknown'")
     return date
 
 
@@ -304,9 +322,19 @@ def tei_place_name(elem_text, attrib_ref="",
     place_name.text = elem_text
     add_attrib(place_name, "ref", attrib_ref)
     if attrib_evidence is not None:
-        add_attrib(place_name, "evidence", attrib_evidence)
-        if attrib_cert is not None:
+        if attrib_evidence in ["internal", "external", "conjecture"]:
+            add_attrib(place_name, "evidence", attrib_evidence)
+        else:
+            print("can not set @evidence with given value!")
+            print("possible values for @evidence:")
+            print("'internal', 'external' or 'conjecture'")
+    if attrib_cert is not None:
+        if attrib_cert in ["low", "medium", "high", "unknown"]:
             add_attrib(place_name, "cert", attrib_cert)
+        else:
+            print("can not set @cert with given value!")
+            print("possible values for @cert:")
+            print("'high', 'medium', 'low' or 'unknown'")
     return place_name
 
 
@@ -320,9 +348,19 @@ def tei_pers_name(elem_text, attrib_ref="",
     pers_name.text = elem_text
     add_attrib(pers_name, "ref", attrib_ref)
     if attrib_evidence is not None:
-        add_attrib(pers_name, "evidence", attrib_evidence)
-        if attrib_cert is not None:
+        if attrib_evidence in ["internal", "external", "conjecture"]:
+            add_attrib(pers_name, "evidence", attrib_evidence)
+        else:
+            print("can not set @evidence with given value!")
+            print("possible values for @evidence:")
+            print("'internal', 'external' or 'conjecture'")
+    if attrib_cert is not None:
+        if attrib_cert in ["low", "medium", "high", "unknown"]:
             add_attrib(pers_name, "cert", attrib_cert)
+        else:
+            print("can not set @cert with given value!")
+            print("possible values for @cert:")
+            print("'high', 'medium', 'low' or 'unknown'")
     return pers_name
 
 
@@ -336,9 +374,19 @@ def tei_org_name(elem_text, attrib_ref="",
     org_name.text = elem_text
     add_attrib(org_name, "ref", attrib_ref)
     if attrib_evidence is not None:
-        add_attrib(org_name, "evidence", attrib_evidence)
-        if attrib_cert is not None:
+        if attrib_evidence in ["internal", "external", "conjecture"]:
+            add_attrib(org_name, "evidence", attrib_evidence)
+        else:
+            print("can not set @evidence with given value!")
+            print("possible values for @evidence:")
+            print("'internal', 'external' or 'conjecture'")
+    if attrib_cert is not None:
+        if attrib_cert in ["low", "medium", "high", "unknown"]:
             add_attrib(org_name, "cert", attrib_cert)
+        else:
+            print("can not set @cert with given value!")
+            print("possible values for @cert:")
+            print("'high', 'medium', 'low' or 'unknown'")
     return org_name
 
 
@@ -418,3 +466,17 @@ def pretty(element):
     pretty print given elements
     """
     print(tostr(element))
+
+
+def validate(root):
+    """
+    validate XML data of given root against RNG schema
+    """
+    schema = rng()
+    result = schema.validate(root)
+    if result:
+        print("valid data in CMI format!")
+    else:
+        print("given data is invalid!")
+        print("error log:")
+        print(schema.error_log)
