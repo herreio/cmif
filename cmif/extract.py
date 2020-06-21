@@ -155,7 +155,7 @@ def date_not_after(data):
 
 def license(data):
     """
-    extract text of TEI element <license>
+    extract text of TEI element <licence>
     """
     try:
         return data.find(".//licence", namespaces=data.nsmap).text
