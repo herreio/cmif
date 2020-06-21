@@ -3,7 +3,7 @@
 """
 Copyright (c) 2020  Donatus Herre <git@herre.io>
 
-This module offers tools to work with data in CMI format.
+This module offers tools for working with data in CMI format.
 """
 __author__ = "Donatus Herre <git@herre.io>"
 __version__ = "2020.6.28"
