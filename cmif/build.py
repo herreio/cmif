@@ -6,7 +6,6 @@ build XML data in CMI format
 
 import uuid
 from lxml import etree
-from .model import rng
 
 XML_NS = "http://www.w3.org/XML/1998/namespace"
 TEI_NS = "http://www.tei-c.org/ns/1.0"
@@ -466,17 +465,3 @@ def pretty(element):
     pretty print given elements
     """
     print(tostr(element))
-
-
-def validate(root):
-    """
-    validate XML data of given root against RNG schema
-    """
-    schema = rng()
-    result = schema.validate(root)
-    if result:
-        print("valid data in CMI format!")
-    else:
-        print("given data is invalid!")
-        print("error log:")
-        print(schema.error_log)
