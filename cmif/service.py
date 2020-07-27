@@ -68,6 +68,7 @@ def correspsearch(correspondent=None, sender=None, addressee=None,
                 if type(response.json()) == dict:
                     return response.json()
                 else:
+                    print("cmif.service.correspsearch:")
                     print("Invalid query!")
                     return {}
             else:
