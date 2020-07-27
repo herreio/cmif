@@ -16,12 +16,16 @@ def remote_file(url):
     try:
         response = requests.get(url)
         if response.status_code == 200:
-            return etree.fromstring(response.content)
-        print("requesting remote file failed!")
-        print("url of request:")
-        print(response.url)
-        print("http status code: ",
-              str(response.status_code))
+            try:
+                return etree.fromstring(response.content)
+            except etree.ParseError:
+                print("failed to parse XML file!")
+        else:
+            print("requesting remote file failed!")
+            print("url of request:")
+            print(response.url)
+            print("http status code: ",
+                  str(response.status_code))
     except requests.exceptions.ConnectionError:
         print("request failed! connection error...")
     except requests.exceptions.Timeout:
