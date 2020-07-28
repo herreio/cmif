@@ -280,6 +280,28 @@ def correspaction_type(data):
     return None
 
 
+def org_name(data):
+    """
+    extract text from TEI element <orgName>
+    """
+    try:
+        return data.find(".//orgName", namespaces=data.nsmap).text
+    except AttributeError:
+        pass
+    return None
+
+
+def org_name_ref(data):
+    """
+    extract @ref from TEI element <orgName>
+    """
+    try:
+        return data.find(".//orgName", namespaces=data.nsmap).attrib["ref"]
+    except (AttributeError, KeyError):
+        pass
+    return None
+
+
 def pers_name(data):
     """
     extract text from TEI element <persName>
