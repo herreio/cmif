@@ -41,16 +41,6 @@ To build the documentation from the files found at docs:
     make html
 
 
-Usage
------
-
-Launch the Python interpreter and start by importing the necessary modules:
-
-.. code-block:: python
-
-    from cmif import *
-
-
 Test
 ----
 
