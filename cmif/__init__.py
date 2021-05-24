@@ -6,7 +6,7 @@ Copyright (c) 2021  Donatus Herre <git@herre.io>
 This module offers tools for working with data in CMI format.
 """
 __author__ = "Donatus Herre <git@herre.io>"
-__version__ = "2021.1.30"
+__version__ = "2021.5.24"
 __license__ = "MIT"
 
 from . import demo
