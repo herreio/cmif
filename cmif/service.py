@@ -7,8 +7,8 @@ access data in CMI format through correspSearch webservices
 import requests
 from lxml import etree
 
-TEI_JSON = "http://correspSearch.bbaw.de/api/v1.1/tei-json.xql"
-TEI_XML = "http://correspSearch.bbaw.de/api/v1.1/tei-xml.xql"
+TEI_JSON = "http://correspSearch.bbaw.de/api/v1.2/tei-json.xql"
+TEI_XML = "http://correspSearch.bbaw.de/api/v1.2/tei-xml.xql"
 
 ENTITIES = {
   "HALLE": "http://www.geonames.org/2911522",
