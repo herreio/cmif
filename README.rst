@@ -7,7 +7,7 @@ cmif
 Synopsis
 --------
 
-`cmif` is a Python package for creating and retrieving data in `CMI format <https://github.com/TEI-Correspondence-SIG/CMIF>`_. It has been developed as part of the `Dikon project <https://dikon.izea.uni-halle.de/>`_ (2019--2020) at the `Interdisciplinary Centre for European Enlightenment Studies <https://www.izea.uni-halle.de/>`_.
+``cmif`` is a Python package for creating and retrieving data in `CMI format <https://github.com/TEI-Correspondence-SIG/CMIF>`_. It has been developed as part of the `Dikon project <https://dikon.izea.uni-halle.de/>`_ (2019--2020) at the `Interdisciplinary Centre for European Enlightenment Studies <https://www.izea.uni-halle.de/>`_.
 
 Installation
 ------------
